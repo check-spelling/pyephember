@@ -1359,7 +1359,7 @@ Modes control when your heating controls will be turn on. The supported modes ar
 * All Day - 1 - Starts at start time of period 1 and ends at the end time of period 3
 * Auto - 0 - Based on the times you have configured.
 
-This is equalivent to the "Run Selection" setting in the app.
+This is equivalent to the "Run Selection" setting in the app.
 
 ### Request
 
