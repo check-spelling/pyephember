@@ -8,6 +8,7 @@ import json
 import datetime
 from enum import Enum
 import requests
+from deprecated import deprecated
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -375,7 +376,15 @@ class EphEmber:
 
         return zone_change_data.get("status", 1) == 0
 
+    @deprecated(version='0.3.2',
+                reason="Use set_target_temperature_by_name")
     def set_target_temperture_by_name(self, name, target_temperature):
+        """
+        Deprecated, use set_target_temperature_by_name
+        """
+        return self.set_target_temperature_by_name(name, target_temperature)
+
+    def set_target_temperature_by_name(self, name, target_temperature):
         """
         Set the target temperature for a zone by name
         """
