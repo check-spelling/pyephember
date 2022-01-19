@@ -20,4 +20,4 @@ API
 
 The API is a basic HTTPS API returning data in JSON format. For more details see [here](API.md)
 
-Disclaimer: I have no connection with EPH Controls so cannot guarentee that these API calls will always be valid.
+Disclaimer: I have no connection with EPH Controls so cannot guarantee that these API calls will always be valid.
