@@ -115,7 +115,7 @@ class EphEmber:
             'Authorization': self._login_data['data']['refresh_token']
         }
 
-        url = "{}{}".format(self.api_base_url, "appLogin/refreshAccessToken")
+        url = f"{self.api_base_url}appLogin/refreshAccessToken"
 
         response = requests.get(url, headers=headers, timeout=10)
 
@@ -149,7 +149,7 @@ class EphEmber:
             "Accept": "application/json"
         }
 
-        url = "{}{}".format(self.api_base_url, "appLogin/login")
+        url = f"{self.api_base_url}appLogin/login"
 
         data = {'userName': self._username,
                 'password': self._password}
@@ -198,7 +198,7 @@ class EphEmber:
         if not self._do_auth():
             raise RuntimeError("Unable to login")
 
-        url = "{}{}".format(self.api_base_url, "homes/list")
+        url = f"{self.api_base_url}homes/list"
         headers = {
             "Accept": "application/json",
             'Authorization':
@@ -210,13 +210,12 @@ class EphEmber:
 
         if response.status_code != 200:
             raise RuntimeError(
-                "{} response code when getting home".format(
-                    response.status_code))
+                f"{response.status_code} response code when getting home")
 
         homes = response.json()
         status = homes.get('status', 1)
         if status != 0:
-            raise RuntimeError("Error getting home: {}".format(status))
+            raise RuntimeError(f"Error getting home: {status}")
 
         return homes.get("data", [])
 
@@ -238,7 +237,7 @@ class EphEmber:
                 self._homes = self.list_homes()
             gateway_id = self._get_first_gateway_id()
 
-        url = "{}{}".format(self.api_base_url, "zones/polling")
+        url = f"{self.api_base_url}zones/polling"
 
         data = {
             "gateWayId": gateway_id
@@ -257,8 +256,7 @@ class EphEmber:
 
         if response.status_code != 200:
             raise RuntimeError(
-                "{} response code when getting home".format(
-                    response.status_code))
+                f"{response.status_code} response code when getting home")
 
         home = response.json()
 
@@ -270,7 +268,7 @@ class EphEmber:
         status = home.get('status', 1)
         if status != 0:
             raise RuntimeError(
-                "Error getting zones from home: {}".format(status))
+                f"Error getting zones from home: {status}")
 
         return home["data"]
 
@@ -365,7 +363,7 @@ class EphEmber:
                 self._login_data["data"]["token"]
         }
 
-        url = "{}{}".format(self.api_base_url, "zones/setTargetTemperature")
+        url = f"{self.api_base_url}zones/setTargetTemperature"
 
         response = requests.post(url, data=json.dumps(
             data), headers=headers, timeout=10)
@@ -409,7 +407,7 @@ class EphEmber:
                 self._login_data["data"]["token"]
         }
 
-        url = "{}{}".format(self.api_base_url, "zones/boost")
+        url = f"{self.api_base_url}zones/boost"
 
         response = requests.post(url, data=json.dumps(
             data), headers=headers, timeout=10)
@@ -452,7 +450,7 @@ class EphEmber:
                 self._login_data["data"]["token"]
         }
 
-        url = "{}{}".format(self.api_base_url, "zones/cancelBoost")
+        url = f"{self.api_base_url}zones/cancelBoost"
         response = requests.post(url, data=json.dumps(
             data), headers=headers, timeout=10)
 
@@ -494,7 +492,7 @@ class EphEmber:
                 self._login_data["data"]["token"]
         }
 
-        url = "{}{}".format(self.api_base_url, "zones/setModel")
+        url = f"{self.api_base_url}zones/setModel"
         response = requests.post(url, data=json.dumps(
             data), headers=headers, timeout=10)
 
